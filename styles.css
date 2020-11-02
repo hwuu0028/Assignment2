@@ -3,6 +3,7 @@ header {
 }
 
 header h1 {
+    background-color:powderblue;
     margin: 0;
 }
 
@@ -10,12 +11,14 @@ html, body {
     margin: 0;
     padding: 0;
 }
-
-aside {
-  width: 30%;
-  padding-left: 15px;
-  margin-left: 15px;
-  float: right;
-  font-style: italic;
-  background-color: lightgray;
+.float-container {
+    border: 3px solid #fff;
+    padding: 20px;
 }
+
+.float-child {
+    width: 50%;
+    float: left;
+    padding: 20px;
+    border: 2px solid red;
+}  
