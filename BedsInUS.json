@@ -3,12 +3,20 @@
   "width": 800,
   "height": 400,
   "title": "Number of Available Beds per 1,000 Inhabitants in US",
-  "params": [
+  "params":[
     {
       "name": "year_selected",
       "bind": {
         "input": "select",
-        "options": [null, 2015, 2016, 2017, 2018, 2019, 2020],
+        "options": [
+          null,
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020
+        ],
         "labels": [
           "Select Year",
           "2015",
@@ -24,54 +32,55 @@
   ],
   "layer": [
     {
-      "data": {
-        "url": "data/us-10m.json",
-        "format": {"type": "topojson", "feature": "states"}
-      },
-      "projection": {"type": "albersUsa"},
-      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
-    },
+ "data": {
+ "url": "https://raw.githubusercontent.com/hwuu0028/Assignment2/main/United%20States.topojson",
+ "format": {"type": "topojson", "feature": "ne_110m_admin_1_states_provinces"}
+ },
+ "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+ },
+    
     {
       "data": {
         "url": "https://raw.githubusercontent.com/hwuu0028/Assignment2/main/hospital_beds_USA_v1.csv"
       },
       "transform": [
         {"filter": "year_selected == datum.Year"},
-        {
-          "aggregate": [
-            {"op": "sum", "field": "AveBeds", "as": "Average_Beds_State"}
-          ],
-          "groupby": ["Year", "StateCode", "StateNames", "lng", "lat"]
-        }
-      ],
-      "projection": {"type": "albersUsa"},
+    {"aggregate": [{
+      "op": "sum",
+      "field": "AveBeds",
+      "as": "Average_Beds_State"
+    }],
+    "groupby": ["Year","StateCode","StateNames","lng", "lat"]
+    }
+  ],
+      "projection": {
+        "type": "albersUsa"
+      },
       "mark": "circle",
       "encoding": {
-        "longitude": {"field": "lng", "type": "quantitative"},
-        "latitude": {"field": "lat", "type": "quantitative"},
-        "size": {
-          "field": "Average_Beds_State",
-          "type": "quantitative",
-          "scale": {
-            "type": "threshold",
-            "domain": [0.1, 0.5, 1, 5, 10],
-            "range": [10, 100, 200, 400, 900, 1200]
-          }
+        "longitude": {
+          "field": "lng",
+          "type": "quantitative"
         },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "size": {"field": "Average_Beds_State", 
+        "type": "quantitative",
+        "scale": {
+          "type":"threshold",
+          "domain": [0.1,0.5,1,5,10],
+          "range": [10,100,200,400,900,1200]
+        }},
         "color": {"value": "steelblue"},
         "tooltip": [
-          {"field": "StateNames", "type": "nominal", "title": "State Name"},
-          {"field": "StateCode", "type": "nominal", "title": "State Code"},
-          {"field": "Year", "type": "ordinal", "title": "Year"},
-          {
-            "field": "Average_Beds_State",
-            "type": "quantitative",
-            "title": "Number of Beds (per 1,000 Inhabitants)",
-            "format": ".2f"
-          }
+          {"field": "StateNames", "type": "nominal", "title":"State Name"},
+          {"field": "StateCode", "type": "nominal", "title":"State Code"},
+          {"field": "Year", "type": "ordinal", "title":"Year"},
+          {"field": "Average_Beds_State", "type": "quantitative", "title":"Number of Beds (per 1,000 Inhabitants)", "format": ".2f"}
         ]
       }
     }
-  ],
-  "config": {}
+  ]
 }
