@@ -6,6 +6,20 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
   <!-- Import vega-embed -->
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <style>
+      .float-container {
+    border: 3px solid #fff;
+    padding: 20px;
+}
+
+.float-child {
+    width: 50%;
+    float: left;
+    padding: 20px;
+    border: 2px solid red;
+}  
+
+  </style>
   
   <!-- CSS file -->
 
@@ -28,6 +42,7 @@
     A <b>drop-down selection</b> can be used to view each year's performance. The purpose of this visualisation is to show the <b>comparison of each states</b> performance in the number of beds provided.
     This is an important information, as it can easily address any potential flaws in the health system of USA. If a certain state lacks hospital beds it can impact the ability to react to a health crisis causing strain in
     the hospitals and can lead to an influx of patients without the necessary resource. This visualisation can also help understand the <b>capacity</b> of each state, for the health experts to appropriately assign and relocate patients.
+    To view, please select year with the drop-down box.
     <div id="Bed_map"></div>
     </p>
 <h2>Bed Type Usage Bar Chart</h2>
