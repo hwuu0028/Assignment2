@@ -14,14 +14,22 @@
 </head>
 <body>
   
-<div id="symbol_map"></div>
+<div id="Bed_type"></div>
+ <div id="Bed_map"></div>
 
 <script type="text/javascript">
 
-  var spec2 = "https://raw.githubusercontent.com/hwuu0028/Assignment2/main/BedType.json";
-  vegaEmbed('#symbol_map', spec2).then(function(result) {
+  var spec1 = "https://raw.githubusercontent.com/hwuu0028/Assignment2/main/BedType.json";
+  vegaEmbed('#Bed_type', spec1).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
+ 
+ var spec2 = "https://raw.githubusercontent.com/hwuu0028/Assignment2/main/BedsInUS.json";
+  vegaEmbed('#Bed_map', spec2).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+ 
+ 
 </script>
 
 </body>
