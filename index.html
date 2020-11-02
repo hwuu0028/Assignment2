@@ -8,21 +8,34 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
   
   <!-- CSS file -->
-  <!--<link rel="stylesheet" type="text/css" href="css/styles.css" media="all">-->
+
+  <link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/hwuu0028/Assignment2/main/styles.css" media="all">
 
 </head>
 <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Hospital Beds in United States</h1>
 <h2 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Data for 2015-2020</h2>
 <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">This visualisation is designed to demonstrate the number of hospital beds available in the United States.
     The data was retrieved from <a href="https://www.kaggle.com/ikiulian/global-hospital-beds-capacity-for-covid19?select=hospital_beds_per_wdi_v1.csv">Kaggle</a>
-    by Igor Kiulian, Arthur Kiulian, Augaly S. Kiedi and Kristoffer Jan Zieba. 
+    by Igor Kiulian, Arthur Kiulian, Augaly S. Kiedi and Kristoffer Jan Zieba. The objective of this dataset is to demonstrate the hospital capacity during of each state.
+    This visualisation is critical in understanding the reliability of each state in reacting to a high impact pandemic (such as COVID-19). The data retrieved is a combination from multiple
+    sources. 
 </p>
 
-<body>
-  
+<body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    The first visualisation is a proportional symbol map of United States, with circle marks on the map to indicate the average number of beds per 1,000 inhabitants. 
+    A drop-down selection can be used to view each time frame. The data source had a few missing information therefore a few years are missing information. It can be seen that in 
+
+
 <div id="Bed_type"></div>
- <div id="Bed_map"></div>
- <div id="Scatter_plot"></div>
+<div id="wrapper">
+    <div id="left">
+        <div id="Bed_map"></div>
+    </div>
+    <div id="right">
+        <div id="Scatter_plot"></div>
+    </div>
+</div>
+ 
 
 <script type="text/javascript">
 
