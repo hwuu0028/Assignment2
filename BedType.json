@@ -1,11 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "description": "A bar chart with highlighting on hover and selecting on click. (Inspired by Tableau's interaction style.)",
-  "height": 200,
+  "height": 300,
   "width": 500,
   "data": {
     "url": "https://raw.githubusercontent.com/hwuu0028/Assignment2/main/hospital_beds_USA_v1.csv"
   },
+
   "title": "Average Bed Type",
   "params":[
     {
@@ -21,7 +22,7 @@
           2019
         ],
         "labels": [
-          "Hidden",
+          "Select Year",
           "2015",
           "2016",
           "2017",
@@ -60,11 +61,13 @@
     "x": {
       "field": "Average_Beds_Year",
       "type": "quantitative",
-      "title": "Average Bed Type per 1000 Inhabitants"
+      "title": "Average Bed Type per 1000 Inhabitants",
+      "axis":{"grid": false}
       },
     "y": {
       "field": "Type", 
-      "type": "nominal"},
+      "type": "nominal"
+      },
     "fillOpacity": {
       "condition": {"selection": "select", "value": 1},
       "value": 0.3
@@ -103,9 +106,12 @@
       "value": 0
     }
   },
+  
   "config": {
-    "scale": {
-      "bandPaddingInner": 0.2
+    "padding":{
+      "left": 80,
+      "bottom": 30
     }
   }
+    
 }
