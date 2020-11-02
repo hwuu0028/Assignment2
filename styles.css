@@ -1,5 +1,5 @@
 header {
-    background-color: pink;
+    background-color: blue;
 }
 
 header h1 {
@@ -9,4 +9,13 @@ header h1 {
 html, body {
     margin: 0;
     padding: 0;
+}
+
+#left{
+    float: left;
+    width: 65%;
+    overflow: hidden;
+}
+#right {
+    overflow: hidden;
 }
