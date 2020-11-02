@@ -68,10 +68,11 @@
         },
         "size": {"field": "Average_Beds_State", 
         "type": "quantitative",
+        "legend":{"title": "Average Beds (per 1,000 inhabitants)"},
         "scale": {
           "type":"threshold",
-          "domain": [0.1,0.5,1,5,10],
-          "range": [10,100,200,400,900,1200]
+          "domain": [0.2,0.5,1,5,10,15],
+          "range": [10,100,200,400,900,2000,4000]
         }},
         "color": {"value": "steelblue"},
         "tooltip": [
