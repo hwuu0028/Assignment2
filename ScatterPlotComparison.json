@@ -1,0 +1,78 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 500,
+  "height": 400,
+  "title": "Highest Number of Beds for Each Type",
+  "params": [
+    {
+      "name": "type_selection",
+      "bind": {
+        "input": "select",
+        "options": [null, "ACUTE", "ICU", "PSYCHIATRIC", "OTHER"],
+        "labels": ["All Types", "ACUTE", "ICU", "PSYCHIATRIC", "OTHER"],
+        "name": "Select Bed Type: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "type_selection == null || type_selection == datum.Type"},
+    {
+      "window": [{"op": "rank", "as": "rank"}],
+      "sort": [{"field": "AveBeds", "order": "descending"}]
+    },
+    {"filter": "datum.rank<=20"}
+  ],
+  "selection": {
+    "grid": {"type": "interval", "bind": "scales"},
+    "bed_type": {"type": "multi", "fields": ["Type"], "bind": "legend"},
+    "mouse_hover": {
+      "type": "single",
+      "on": "mouseover",
+      "fields": ["StateNames"],
+      "bind": "legend"
+    }
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/hwuu0028/FIT3179/main/hospital_beds_USA_v1.csv"
+  },
+  "mark": "circle",
+  "encoding": {
+    "x": {
+      "field": "AveBeds",
+      "type": "quantitative",
+      "title": "Number of Beds per 1000 Inhabitants",
+      "axis": {"tickCount": 10},
+      "scale": {"domain": [0, 12]}
+    },
+    "y": {"field": "Year", "type": "ordinal", "title": "Population"},
+    "color": {"field": "StateNames", "title": "Top 20 States"},
+    "size": {
+      "field": "Population",
+      "type": "quantitative",
+      "scale": {
+        "type": "threshold",
+        "domain": [100000, 1000000, 5000000, 10000000],
+        "range": [50, 150, 500, 1000, 2000]
+      },
+      "legend": {"format": ".1s"}
+    },
+    "opacity": {
+      "condition": [{"selection": "mouse_hover", "value": 1}],
+      "value": 0.2
+    },
+    "tooltip": [
+      {"field": "StateNames", "type": "nominal", "title": "State Name"},
+      {"field": "StateCode", "type": "nominal", "title": "State Code"},
+      {"field": "Type", "type": "nominal", "title": "Bed Type"},
+      {"field": "Year", "type": "quantitative"},
+      {
+        "field": "AveBeds",
+        "type": "quantitative",
+        "title": "Average Beds per 1000",
+        "format": ".2f"
+      },
+      {"field": "Population", "type": "quantitative", "format": ","}
+    ]
+  },
+  "config": {}
+}
