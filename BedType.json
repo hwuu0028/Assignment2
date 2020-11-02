@@ -4,6 +4,7 @@
   "data": {
     "url": "https://raw.githubusercontent.com/hwuu0028/Assignment2/main/hospital_beds_USA_v1.csv"
   },
+  "Title" : "Average Bed Type per Year",
   "params":[
     {
       "name": "year_selected",
@@ -25,7 +26,7 @@
           "2018",
           "2019"
         ],
-        "name": "Select Year"
+        "name": "Select Year: "
       }
     }
   ],
@@ -57,7 +58,7 @@
     "x": {
       "field": "Average_Beds_Year",
       "type": "quantitative",
-      "title": "Average Bed Type"
+      "title": "Average Bed Type per 1000 Inhabitants"
       },
     "y": {
       "field": "Type", 
