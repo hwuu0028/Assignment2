@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "width": 800,
+  "width": 1000,
   "height": 400,
   "title": "Number of Available Beds per 1,000 Inhabitants in US",
   "params":[
